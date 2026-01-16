@@ -17,30 +17,19 @@ void testReferenceVsPointers() {
 void testCopyVsMove() {
     std::cout << "\n\n ----- TEST 2: Copy vs Move -----" << std::endl;
 
-    Rocket original("Original Plane", 70, 7.8f);
-
-    Rocket copied = original; // copy constructor called
-    std::cout << "Original: " << original.getRocketName() << std::endl;
-    std::cout << "Copied: " << copied.getRocketName() << std::endl;
-
-    std::cout << "\nAfter move:" << std::endl;
-    Rocket moved = std::move(original);
-    std::cout << "@" << &original << ". Original (moved from): " << original.getRocketName() << std::endl;
-    std::cout << "@" << &moved << ". Moved: " << moved.getRocketName() << std::endl;
-
-// COPY ASSIGNMENT
+    // COPY ASSIGNMENT
     Rocket rocketA("Rocket A", 50, 5.0f);
     Rocket rocketB("Rocket B", 60, 6.0f);
     rocketA = rocketB;  // Copy assignment
     std::cout << "\nAfter copy assignment:" << std::endl;
-    std::cout << "@" << &moved << ". Rocket A: " << rocketA.getRocketName() << std::endl;
+    std::cout << "@" << &rocketA << ". Rocket A: " << rocketA.getRocketName() << std::endl;
     
     // MOVE ASSIGNMENT
     Rocket rocketC("Rocket C", 70, 7.0f);
     rocketC = std::move(rocketB);  // Move assignment
     std::cout << "\nAfter move assignment:" << std::endl;
-    std::cout << "@" << &moved << ". Rocket C: " << rocketC.getRocketName() << std::endl;
-    std::cout << "@" << &moved << ". Rocket B (moved from): " << rocketB.getRocketName() << std::endl;
+    std::cout << "@" << &rocketC << ". Rocket C: " << rocketC.getRocketName() << std::endl;
+    std::cout << "@" << &rocketB << ". Rocket B (moved from): " << rocketB.getRocketName() << std::endl;
 }
 
 int main() {
